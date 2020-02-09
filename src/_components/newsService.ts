@@ -14,9 +14,15 @@ const firebaseApp = firebase.initializeApp({
 const db =  firebase.database(firebaseApp);
 export const newsBase = rebase.createClass(db);
 
-const getNewsStories = (items: number[]) => {
+const latestItemsEndpoint = 'https://hacker-news.firebaseio.com/v0/newstories.json';
+
+const getNewsStoriesByIdsFirebase = (items: number[]) => {
     let getItemPromises = items.map(itemId => newsBase.fetch(`v0/item/${itemId}`, { context: {} }));
     return Promise.all(getItemPromises).then(values => values);
+}
+
+const getItemUrl = (itemId: number) => {
+    return `https://hacker-news.firebaseio.com/v0/item/${itemId}.json`;
 }
 
 const NewsService = {
@@ -24,12 +30,18 @@ const NewsService = {
         context: {},
         asArray: true,
         then(data: number[]) {
-            getNewsStories(data).then((newsItemsArray: any[]) => {
+            getNewsStoriesByIdsFirebase(data).then((newsItemsArray: any[]) => {
                 callback(newsItemsArray)
             });
         }
     }),
-    getNewsStories,
+    getLatestNewsItemsIds: () => {
+        return fetch(latestItemsEndpoint).then(response => response.json());
+    },
+    getNewsStoriesByIds: (items: number[]) => {
+        let getItemPromises = items.map(itemId => fetch(getItemUrl(itemId)).then((response: any) => response.json() ));
+        return Promise.all(getItemPromises).then(values => values);
+    },
 };
 
 export default NewsService;

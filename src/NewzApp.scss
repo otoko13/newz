@@ -2,8 +2,14 @@
 
 .NewzApp {
   margin: 10px;
-  background: $neutralLighter;
-  flex: 1 0 auto;
+  flex: 0 1 auto;
   padding: 20px;
+  height: 100%;
+  overflow: hidden;
+
+  .list-container {
+    background: $neutralLighter;
+    height: 100%;
+  }
 }
 
