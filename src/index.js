@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import App from './App';
+import NewzApp from './NewzApp';
 import { loadFabricTheme } from './loadOfficeFabric';
 
 loadFabricTheme();
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<NewzApp />, document.getElementById('root'));
