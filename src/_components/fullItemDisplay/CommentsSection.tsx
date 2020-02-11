@@ -36,7 +36,7 @@ const CommentsSection = (props: ICommentsSectionProps) => {
             }
             { 
                 (!loading && comments.length > 0) &&
-                comments.map(comment => <Comment comment={comment} />)
+                comments.map(comment => <Comment key={comment.id} comment={comment} />)
             }
         </div>	
     );	

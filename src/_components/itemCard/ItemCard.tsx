@@ -1,9 +1,9 @@
 import React from 'react';
 import moment from 'moment';
 import './itemCard.scss';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack } from 'office-ui-fabric-react/lib-commonjs/Stack';
 import { INewsItem, ENewsType } from '../newsService';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { Icon } from 'office-ui-fabric-react/lib-commonjs/Icon';
 
 export interface IItemCardProps {
     newsItem: INewsItem;

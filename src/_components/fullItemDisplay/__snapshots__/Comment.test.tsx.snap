@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should look sensible 1`] = `
+<div
+  class="Comment"
+>
+  <div
+    class="by"
+  >
+    King Julian
+  </div>
+  <div
+    class="date"
+  >
+    17:38, Tuesday February 11th 2020
+  </div>
+  <div
+    class="comment-content"
+  >
+    I believe
+  </div>
+</div>
+`;

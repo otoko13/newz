@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot should look sensible 1`] = `
+<div
+  class="CommentsSection"
+>
+  <div
+    class="title"
+  >
+    Comments:
+  </div>
+  <div
+    class="LoadShimmer"
+    style="height: 95px; margin-bottom: 20px;"
+    title="loading"
+  >
+    <div
+      class="ms-Shimmer-container top root-38"
+    >
+      <div
+        class="ms-Shimmer-shimmerWrapper shimmerWrapper-39"
+        style="width: 100%;"
+      >
+        <div
+          class="ms-Shimmer-shimmerGradient shimmerGradient-40"
+        />
+        <div
+          class="ms-ShimmerElementsGroup-root root-43"
+          style="width: auto;"
+        >
+          <div
+            class="ms-ShimmerLine-root root-44"
+            style="width: 80%; min-width: auto;"
+          >
+            <svg
+              class="ms-ShimmerLine-topLeftCorner topLeftCorner-45"
+              height="2"
+              width="2"
+            >
+              <path
+                d="M0 2 A 2 2, 0, 0, 1, 2 0 L 0 0 Z"
+              />
+            </svg>
+            <svg
+              class="ms-ShimmerLine-topRightCorner topRightCorner-46"
+              height="2"
+              width="2"
+            >
+              <path
+                d="M0 0 A 2 2, 0, 0, 1, 2 2 L 2 0 Z"
+              />
+            </svg>
+            <svg
+              class="ms-ShimmerLine-bottomRightCorner bottomRightCorner-47"
+              height="2"
+              width="2"
+            >
+              <path
+                d="M2 0 A 2 2, 0, 0, 1, 0 2 L 2 2 Z"
+              />
+            </svg>
+            <svg
+              class="ms-ShimmerLine-bottomLeftCorner bottomLeftCorner-48"
+              height="2"
+              width="2"
+            >
+              <path
+                d="M2 2 A 2 2, 0, 0, 1, 0 0 L 0 2 Z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ms-Shimmer-container root-38"
+    >
+      <div
+        class="ms-Shimmer-shimmerWrapper shimmerWrapper-39"
+        style="width: 30%;"
+      >
+        <div
+          class="ms-Shimmer-shimmerGradient shimmerGradient-40"
+        />
+        <div
+          class="ms-ShimmerElementsGroup-root root-43"
+          style="width: auto;"
+        >
+          <div
+            class="ms-ShimmerLine-root root-49"
+            style="width: 100%; min-width: auto;"
+          >
+            <svg
+              class="ms-ShimmerLine-topLeftCorner topLeftCorner-45"
+              height="2"
+              width="2"
+            >
+              <path
+                d="M0 2 A 2 2, 0, 0, 1, 2 0 L 0 0 Z"
+              />
+            </svg>
+            <svg
+              class="ms-ShimmerLine-topRightCorner topRightCorner-46"
+              height="2"
+              width="2"
+            >
+              <path
+                d="M0 0 A 2 2, 0, 0, 1, 2 2 L 2 0 Z"
+              />
+            </svg>
+            <svg
+              class="ms-ShimmerLine-bottomRightCorner bottomRightCorner-47"
+              height="2"
+              width="2"
+            >
+              <path
+                d="M2 0 A 2 2, 0, 0, 1, 0 2 L 2 2 Z"
+              />
+            </svg>
+            <svg
+              class="ms-ShimmerLine-bottomLeftCorner bottomLeftCorner-48"
+              height="2"
+              width="2"
+            >
+              <path
+                d="M2 2 A 2 2, 0, 0, 1, 0 0 L 0 2 Z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

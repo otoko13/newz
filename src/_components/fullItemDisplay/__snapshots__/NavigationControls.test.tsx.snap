@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot should look sensible 1`] = `
+<div
+  class="ms-Stack NavigationControls css-40"
+>
+  <div
+    class="ms-StackItem css-41"
+  >
+    <button
+      aria-label="Previous item"
+      class="ms-Button ms-Button--icon navigation-button root-42"
+      data-is-focusable="true"
+      type="button"
+    >
+      <span
+        class="ms-Button-flexContainer flexContainer-43"
+        data-automationid="splitbuttonprimary"
+      >
+        <i
+          aria-hidden="true"
+          class="ms-Icon root-33 ms-Button-icon icon-45"
+          data-icon-name="ChevronLeft"
+          role="presentation"
+        />
+      </span>
+    </button>
+  </div>
+  <div
+    class="ms-StackItem css-41"
+  >
+    <button
+      aria-label="Next item"
+      class="ms-Button ms-Button--icon navigation-button root-42"
+      data-is-focusable="true"
+      type="button"
+    >
+      <span
+        class="ms-Button-flexContainer flexContainer-43"
+        data-automationid="splitbuttonprimary"
+      >
+        <i
+          aria-hidden="true"
+          class="ms-Icon root-33 ms-Button-icon icon-45"
+          data-icon-name="ChevronRight"
+          role="presentation"
+        />
+      </span>
+    </button>
+  </div>
+</div>
+`;
