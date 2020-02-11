@@ -1,7 +1,7 @@
 @import '../../fabricTheme/variables';
 
 .FullItemDisplay {
-    padding: 50px;
+    padding: 30px 50px;
 
     .no-items-message {
         font-style: italic;
@@ -21,7 +21,8 @@
         color: $neutralTertiary;
     }
 
-    .content {
+    .content, .article-link {
+        display: block;
         padding-top: 40px;
     }
 }

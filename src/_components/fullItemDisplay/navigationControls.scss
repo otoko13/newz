@@ -1,0 +1,10 @@
+@import '../../fabricTheme/variables';
+
+.NavigationControls {
+    color: $themePrimary;
+    margin-bottom: 30px;
+
+    .navigation-button {
+        transform: scale(1.3);
+    }
+}

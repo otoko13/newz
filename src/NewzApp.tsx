@@ -34,11 +34,7 @@ const NewzApp = () => {
   }
 
   function handleNewsItemSelected(newsItem: INewsItem) {
-    if (!newsItem.url) {
-      setSelectedNewsitem(newsItem);
-    } else {
-      setSelectedNewsitem(undefined);
-    }
+    setSelectedNewsitem(newsItem);
     setVisitedItems([...visitedItems, newsItem.id]);
   }
 
@@ -58,6 +54,24 @@ const NewzApp = () => {
     return newsItems.filter(item => filters.includes(item.type));
   }
 
+  function handlNextClicked() {
+    if (selectedNewsItem) {
+      const indexOfSelected = newsItems.indexOf(selectedNewsItem);
+      const newSelected = newsItems[indexOfSelected + 1];
+      setSelectedNewsitem(newSelected);
+      setVisitedItems([...visitedItems, newSelected.id]);
+    }
+  }
+
+  function handlPreviousClicked() {
+    if (selectedNewsItem) {
+      const indexOfSelected = newsItems.indexOf(selectedNewsItem);
+      const newSelected = newsItems[indexOfSelected - 1];
+      setSelectedNewsitem(newSelected);
+      setVisitedItems([...visitedItems, newSelected.id]);
+    }
+  }
+
   return (
     <Stack className="NewzApp" verticalAlign='start' horizontal tokens={{childrenGap: 20}}>
       <Stack.Item className='left-panel' styles={{root: {width: '35%', height: '100%'}}}>
@@ -69,7 +83,7 @@ const NewzApp = () => {
             {
               isLoadingLatest && <LoadShimmerCollection />
             }
-            <NewsItemsList 
+            <NewsItemsList
               newsItems={filteredNewsItems()}
               selectedItem={selectedNewsItem}
               visitedItems={visitedItems}
@@ -84,7 +98,12 @@ const NewzApp = () => {
         </Stack>
       </Stack.Item>
       <Stack.Item verticalFill className='right-panel full-display-container' styles={{root: {width: '65%'}}}>
-        <FullItemDisplay newsItem={selectedNewsItem} />
+        <FullItemDisplay 
+          newsItem={selectedNewsItem}
+          onNextClick={handlNextClicked}
+          onPreviousClick={handlPreviousClicked}
+          hasNext={!!selectedNewsItem && newsItems.indexOf(selectedNewsItem) < newsItems.length - 1}
+          hasPrevious={!!selectedNewsItem && newsItems.indexOf(selectedNewsItem) > 0} />
       </Stack.Item>
     </Stack>
   );

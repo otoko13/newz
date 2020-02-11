@@ -30,15 +30,14 @@ const ItemCard = (props: IItemCardProps) => {
                 return 'Articles';
             case ENewsType.Job:
                 return 'Commitments';
+            case ENewsType.Poll:
+                return 'PollResults';
         }
         return '';
     }
 
     return (
-        <a 
-            href={props.newsItem.url}
-            target="_blank" 
-            rel="noopener noreferrer"
+        <div
             className={`ItemCard ${props.visited && !props.selected ? 'visited' : ''} ${props.isLatest ? 'just-added' : ''} ${props.selected ? 'selected' : ''}`}
             onClick={props.onItemSelected} 
             style={
@@ -76,7 +75,7 @@ const ItemCard = (props: IItemCardProps) => {
                     </Stack>
                 </Stack.Item>
             </Stack>
-        </a>
+        </div>
     );
 }
 

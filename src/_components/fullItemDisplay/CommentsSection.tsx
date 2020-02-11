@@ -32,7 +32,7 @@ const CommentsSection = (props: ICommentsSectionProps) => {
             }
             {
                 (!loading && comments.length === 0) &&
-                <div className='no-items-message'>No Comments</div>	
+                <div className='no-comments-message'>No Comments</div>	
             }
             { 
                 (!loading && comments.length > 0) &&

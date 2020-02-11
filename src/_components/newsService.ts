@@ -30,7 +30,10 @@ export interface INewsItem {
 export enum ENewsType {
     Story = 'story',
     Job = 'Job',
+    Poll = 'Poll',
 }
+
+const ALLOWED_TYPES = [ENewsType.Poll.toString(), ENewsType.Job.toString(), ENewsType.Story.toString()];
 
 const latestItemsEndpoint = 'https://hacker-news.firebaseio.com/v0/newstories.json';
 export const ITEMS_TO_FETCH_IN_BATCH = 50;
@@ -54,7 +57,7 @@ function getStoriesByIds(items: number[]): Promise<INewsItem[]> {
 }
 
 function getFilteredSortedRelevantStories(rawNewsItems: INewsItem[]) {
-    return rawNewsItems.filter(item => !!item && item.type && (item.type === ENewsType.Story || item.type === ENewsType.Job)).sort((a, b) => a.time < b.time ? 1 : -1);
+    return rawNewsItems.filter(item => !!item && ALLOWED_TYPES.includes(item.type)).sort((a, b) => a.time < b.time ? 1 : -1);
 }
 
 const commentsStore: INewsItem[] = [];
