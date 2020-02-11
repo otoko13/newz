@@ -33,6 +33,8 @@ As always with coding exercises, you can't do everything you'd love to. Here are
 
 - Lots of consideration for a responsive layout - this doesn't work well at all on smaller screens.
 
+- I spent many hours initially trying to get the Firebase real time updates working, but had to give up - I got no permissions errors when I tried to call the endpoints. It would have been nice to get this working - it's not ideal to have the news list auto-updating while users are browsing but it might be nice as an option for people who have the page up in the background (hence the idea behind the animation and highlighting of newly dropped in items).
+
 - Other improvements:
     - Mark as unread button
     - Add some keyboard navigation (up, down)
