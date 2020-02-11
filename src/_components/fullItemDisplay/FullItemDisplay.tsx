@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import './fullItemDisplay.scss';	
 import { INewsItem } from '../newsService';
+import CommentsSection from './CommentsSection';
 
 export interface IFullItemDisplayProps {	
     newsItem?: INewsItem;	
@@ -21,9 +22,14 @@ const FullItemDisplay = (props: IFullItemDisplayProps) => {
                     <div className='by'>{props.newsItem.by}</div>	
                     <div className='date'>{getFormattedDate(props.newsItem.time * 1000)}</div>
                     {
-                        props.newsItem.text &&
-                        <div className='content' dangerouslySetInnerHTML={{__html: props.newsItem.text}}></div>
+                        props.newsItem.text && (
+                            <>
+                                <div className='content' dangerouslySetInnerHTML={{__html: props.newsItem.text}}></div>
+                                <CommentsSection newsItem={props.newsItem} />
+                            </>
+                        )
                     }
+                    
                 </>
             }
             { 

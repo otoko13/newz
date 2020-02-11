@@ -10,8 +10,6 @@ const LoadShimmer = () =>
             <Shimmer className='top' width={'100%'} shimmerElements={[{ type: ShimmerElementType.line, height: 30, width: '80%' }]} />
             <Shimmer width={'30%'} shimmerElements={[
                 { type: ShimmerElementType.line, height: 17 },
-                // { type: ShimmerElementType.gap, width: '50%' },
-                // { type: ShimmerElementType.line, height: 30, width: '20%' },
             ]} />
         </Fabric>
     </div>

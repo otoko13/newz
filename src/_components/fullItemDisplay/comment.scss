@@ -1,0 +1,23 @@
+@import '../../fabricTheme/variables';
+
+.Comment {
+    margin-bottom: 30px;
+    font-size: 0.9em;
+    
+    .by {
+        
+    }
+
+    .date {
+
+    }
+
+    .content {
+        padding-top: 10px;
+
+        p {
+            margin: 0;
+        }
+    }
+
+}

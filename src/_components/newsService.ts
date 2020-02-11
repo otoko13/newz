@@ -48,7 +48,7 @@ function getLatestNewsItemsIds() {
     return fetch(latestItemsEndpoint).then(response => response.json());
 }
 
-function getStoriesByIds(items: number[]) {
+function getStoriesByIds(items: number[]): Promise<INewsItem[]> {
     let getItemPromises = items.map(itemId => fetch(getItemUrl(itemId)).then((response: any) => response.json() ));
     return Promise.all(getItemPromises).then(values => values);
 }
@@ -56,6 +56,8 @@ function getStoriesByIds(items: number[]) {
 function getFilteredSortedRelevantStories(rawNewsItems: INewsItem[]) {
     return rawNewsItems.filter(item => !!item && item.type && (item.type === ENewsType.Story || item.type === ENewsType.Job)).sort((a, b) => a.time < b.time ? 1 : -1);
 }
+
+const commentsStore: INewsItem[] = [];
 
 const NewsService = {
     subscribeToNewsUpdates: (callback: (newsItems: any[]) => void) => newsBase.listenTo('v0/newsstories', {
@@ -88,6 +90,19 @@ const NewsService = {
             return getStoriesByIds(idsToGet);
         }).then((newsitems: INewsItem[]) => {
             return getFilteredSortedRelevantStories(newsitems);
+        });
+    },
+    getComments: (newsItem: INewsItem) => {
+        if (!newsItem.kids) {
+            return Promise.resolve([]);
+        }
+        const alreadyCachedItemIds = commentsStore.map(comment => comment.id);
+        const uncachedItems = newsItem.kids.filter(itemId => !alreadyCachedItemIds.includes(itemId));
+        const cachedItems = commentsStore.filter(item => newsItem.kids.includes(item.id));
+
+        return getStoriesByIds(uncachedItems).then(comments => {
+            commentsStore.push(...comments);
+            return [...comments, ...cachedItems].sort((a, b) => a.time < b.time ? 1 : -1)
         });
     },
 };
