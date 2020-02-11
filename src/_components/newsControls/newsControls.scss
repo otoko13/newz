@@ -4,4 +4,12 @@
     .refresh-button {
         transform: scale(1.3);
     }
+
+    .NewsTypeFilter, .StoryTypeFilter {
+        display: inline-block;
+    }
+
+    .StoryTypeFilter {
+        margin-left: 20px;
+    }
 }

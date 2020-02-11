@@ -29,6 +29,7 @@ const NewsTypeFilter = (props: INewsTypeFilterProps) => {
 
     return (
         <Dropdown
+            className='NewsTypeFilter'
             placeholder="Select types of articles"
             label="What do you want to see?"
             selectedKeys={props.filters}
@@ -37,8 +38,9 @@ const NewsTypeFilter = (props: INewsTypeFilterProps) => {
             options={[
                 { key: ENewsType.Story.toString(), text: 'Stories' },
                 { key: ENewsType.Job.toString(), text: 'Jobs' },
+                { key: ENewsType.Poll.toString(), text: 'Polls' },
             ]}
-            styles={{ dropdown: { width: 300 } }}
+            styles={{ dropdown: { width: 200 } }}
         />
     );
 }

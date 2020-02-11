@@ -1,28 +1,35 @@
 @import '../../fabricTheme/variables';
 
 .FullItemDisplay {
-    padding: 30px 50px;
+    padding: 30px 30px 0 50px;
+    height: 100%;
 
-    .no-items-message {
-        font-style: italic;
-        padding-top: 80px;
-        width: 100%;
-        text-align: center;
-    }
-
-    .title {
-        color: $themePrimary;
-        font-size: 1.5em;
+    .item-content {
+        overflow: auto;
         padding-bottom: 20px;
-    }
 
-    .by, .date {
-        font-size: 1.2em;
-        color: $neutralTertiary;
-    }
+        .no-items-message {
+            font-style: italic;
+            padding-top: 80px;
+            width: 100%;
+            text-align: center;
+        }
 
-    .content, .article-link {
-        display: block;
-        padding-top: 40px;
+        .title {
+            color: $themePrimary;
+            font-size: 1.5em;
+            padding-bottom: 20px;
+        }
+
+        .by, .date {
+            font-size: 1.2em;
+            color: $neutralTertiary;
+        }
+
+        .content, .article-link {
+            display: block;
+            padding-top: 40px;
+        }
+
     }
 }

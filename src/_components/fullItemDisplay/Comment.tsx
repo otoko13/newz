@@ -15,7 +15,7 @@ const Comment = (props: ICommentProps) =>
     <div className='Comment'>
         <div className='by'>{props.comment.by}</div>
         <div className='date'>{getFormattedDate(props.comment.time * 1000)}</div>
-        <div className='content' dangerouslySetInnerHTML={{__html: props.comment.text || ''}} />
+        <div className='comment-content' dangerouslySetInnerHTML={{__html: props.comment.text || ''}} />
     </div>;
 
 export default Comment; 

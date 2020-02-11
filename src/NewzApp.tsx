@@ -1,6 +1,6 @@
 import React from 'react';
 import './NewzApp.scss';
-import NewsService, { INewsItem, ENewsType } from './_components/newsService';
+import NewsService, { INewsItem, ENewsType, EStoriesType } from './_components/newsService';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import NewsItemsList from './_components/newsItemsList/NewsItemsList';
 import NewsControls from './_components/newsControls/NewsControls';
@@ -16,13 +16,15 @@ const NewzApp = () => {
   const [isLoadingLatest, setIsLoadingLatest] = React.useState<boolean>(false);
   const [isLoadingOlder, setIsLoadingOlder] = React.useState<boolean>(false);
   const [selectedNewsItem, setSelectedNewsitem] = React.useState<INewsItem | undefined>();
-  const [filters, setFilters] = React.useState<string[]>([ENewsType.Story, ENewsType.Job]);
+  const [filters, setFilters] = React.useState<string[]>([ENewsType.Story.toString(), ENewsType.Job.toString()]);
+  const [storiesType, setStoriesType] = React.useState<string>(EStoriesType.New.toString());
 
   React.useEffect(fetchLatestNews, []);
 
-  function fetchLatestNews() {
+  function fetchLatestNews(totalRefresh?: boolean) {
     setIsLoadingLatest(true);
-    NewsService.getLatestNewsItems(newsItems).then((latestNewsitems: INewsItem[]) => {
+    const currentNewsItems = totalRefresh ? [] : newsItems
+    NewsService.getLatestNewsItems(currentNewsItems, storiesType).then((latestNewsitems: INewsItem[]) => {
       setIsLoadingLatest(false);
       setNewsItems(oldItems => [...latestNewsitems, ...oldItems]);
       if (hasFetchedOnce) {
@@ -40,7 +42,7 @@ const NewzApp = () => {
 
   function fetchOlderNews() {
     setIsLoadingOlder(true);
-    NewsService.getOlderNewsItems(newsItems).then((olderNewsitems: INewsItem[]) => {
+    NewsService.getOlderNewsItems(newsItems, storiesType).then((olderNewsitems: INewsItem[]) => {
       setIsLoadingOlder(false);
       setNewsItems(existingItems => [...existingItems, ...olderNewsitems]);
     });
@@ -48,6 +50,12 @@ const NewzApp = () => {
 
   function handleFiltersChanged(newFilters: string[]) {
     setFilters(newFilters);
+  }
+
+  function handleStoryTypeChanged(newFilter: string) {
+    clearData();
+    setStoriesType(newFilter);
+    fetchLatestNews(true);
   }
 
   function filteredNewsItems() {
@@ -72,12 +80,23 @@ const NewzApp = () => {
     }
   }
 
+  function clearData() {
+    setNewsItems([]);
+    setHasFetchedOnce(false);
+    setVisitedItems([]);
+  }
+
   return (
     <Stack className="NewzApp" verticalAlign='start' horizontal tokens={{childrenGap: 20}}>
       <Stack.Item className='left-panel' styles={{root: {width: '35%', height: '100%'}}}>
         <Stack verticalFill>
           <Stack.Item shrink>
-            <NewsControls onRefreshClick={fetchLatestNews} onFiltersChanged={handleFiltersChanged} filters={filters} />
+            <NewsControls 
+              onRefreshClick={fetchLatestNews}
+              storiesType={storiesType}
+              onStoryTypeChange={handleStoryTypeChanged} 
+              onFiltersChanged={handleFiltersChanged} 
+              filters={filters} />
           </Stack.Item>
           <Stack.Item grow className='list-container'>
             {

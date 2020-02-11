@@ -3,11 +3,14 @@ import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import './newsControls.scss';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import NewstypeFilter from './NewsTypeFilter';
+import StoryTypeFilter from './StoryTypeFilter';
 
 export interface INewsControlsProps {
     onRefreshClick: () => void;
     filters: string[];
     onFiltersChanged: (types: string[]) => void;
+    onStoryTypeChange: (type: string) => void;
+    storiesType: string;
 }
 
 const NewsControls = (props: INewsControlsProps) => {
@@ -15,6 +18,7 @@ const NewsControls = (props: INewsControlsProps) => {
         <Stack horizontal verticalAlign='end' horizontalAlign='space-between' className='NewsControls'>
             <Stack.Item>
                 <NewstypeFilter onFiltersChanged={props.onFiltersChanged} filters={props.filters} />
+                <StoryTypeFilter onFilterChanged={props.onStoryTypeChange} filter={props.storiesType} />
             </Stack.Item>
             <Stack.Item>
                 <div>

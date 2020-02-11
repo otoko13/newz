@@ -32,4 +32,5 @@ As always with coding exercises, you can't do everything you'd love to. Here are
 - Other nice to have features:
     - Mark as unread button
     - Another filter to select between top stories, new stories and best stories
+    - Add some keyboard navigation (up, down)
 

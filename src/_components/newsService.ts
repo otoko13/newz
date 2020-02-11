@@ -33,9 +33,13 @@ export enum ENewsType {
     Poll = 'Poll',
 }
 
-const ALLOWED_TYPES = [ENewsType.Poll.toString(), ENewsType.Job.toString(), ENewsType.Story.toString()];
+export enum EStoriesType {
+    Top = 'top',
+    New = 'new',
+    Best = 'best',
+}
 
-const latestItemsEndpoint = 'https://hacker-news.firebaseio.com/v0/newstories.json';
+const ALLOWED_TYPES = [ENewsType.Poll.toString(), ENewsType.Job.toString(), ENewsType.Story.toString()];
 export const ITEMS_TO_FETCH_IN_BATCH = 50;
 
 function getNewsStoriesByIdsFirebase(items: number[]) {
@@ -47,8 +51,8 @@ function getItemUrl(itemId: number) {
     return `https://hacker-news.firebaseio.com/v0/item/${itemId}.json`;
 }
 
-function getLatestNewsItemsIds() {
-    return fetch(latestItemsEndpoint).then(response => response.json());
+function getLatestNewsItemsIds(storyType: string) {
+    return fetch(`https://hacker-news.firebaseio.com/v0/${storyType}stories.json`).then(response => response.json());
 }
 
 function getStoriesByIds(items: number[]): Promise<INewsItem[]> {
@@ -74,8 +78,8 @@ const NewsService = {
     }),
     getLatestNewsItemsIds,
     getStoriesByIds,
-    getLatestNewsItems: (currentNewsItems: INewsItem[]) => {
-        return getLatestNewsItemsIds().then((ids: number[]) => {
+    getLatestNewsItems: (currentNewsItems: INewsItem[], storyType: string) => {
+        return getLatestNewsItemsIds(storyType).then((ids: number[]) => {
             const latestItems = ids.slice(0, ITEMS_TO_FETCH_IN_BATCH);
             const existingIds = currentNewsItems.map(item => item.id);
             const newIds = latestItems.filter(id => !existingIds.includes(id));
@@ -84,9 +88,9 @@ const NewsService = {
             return getFilteredSortedRelevantStories(latestNewsitems);
         });
     },
-    getOlderNewsItems: (currentNewsItems: INewsItem[]) => {
+    getOlderNewsItems: (currentNewsItems: INewsItem[], storyType: string) => {
         const oldestItemId = Math.min(...currentNewsItems.map(item => item.id));
-        return getLatestNewsItemsIds().then((ids: number[]) => {
+        return getLatestNewsItemsIds(storyType).then((ids: number[]) => {
             const indexOfOldestItem = ids.sort().reverse().indexOf(oldestItemId);
             const indexToSearchFrom = indexOfOldestItem === -1 ? 0 : indexOfOldestItem + 1;
             const idsToGet = ids.slice(indexToSearchFrom, indexToSearchFrom + ITEMS_TO_FETCH_IN_BATCH);
