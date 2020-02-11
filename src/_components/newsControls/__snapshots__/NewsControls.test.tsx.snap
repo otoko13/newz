@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot should look sensible 1`] = `
+<div
+  class="ms-Stack NewsControls css-40"
+>
+  <div
+    class="ms-StackItem css-41"
+  >
+    <div
+      class="ms-Dropdown-container NewsTypeFilter root-42"
+    >
+      <label
+        class="ms-Label ms-Dropdown-label label-60"
+        id="Dropdown0-label"
+      >
+        What do you want to see?
+      </label>
+      <div
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-labelledby="Dropdown0-label Dropdown0-option"
+        class="ms-Dropdown dropdown-44"
+        data-is-focusable="true"
+        id="Dropdown0"
+        role="button"
+        tabindex="0"
+      >
+        <span
+          aria-atomic="true"
+          aria-invalid="false"
+          aria-live="polite"
+          class="ms-Dropdown-title title-45"
+          id="Dropdown0-option"
+        >
+          Stories
+        </span>
+        <span
+          class="ms-Dropdown-caretDownWrapper caretDownWrapper-46"
+        >
+          <i
+            aria-hidden="true"
+            class="ms-Dropdown-caretDown caretDown-61"
+            data-icon-name="ChevronDown"
+          />
+        </span>
+      </div>
+    </div>
+    <div
+      class="ms-Dropdown-container StoryTypeFilter root-42"
+    >
+      <div
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        class="ms-Dropdown dropdown-44"
+        data-is-focusable="true"
+        id="Dropdown1"
+        role="listbox"
+        tabindex="0"
+      >
+        <span
+          aria-atomic="true"
+          aria-invalid="false"
+          aria-live="polite"
+          aria-posinset="1"
+          aria-selected="true"
+          aria-setsize="3"
+          class="ms-Dropdown-title title-45"
+          id="Dropdown1-option"
+          role="option"
+        >
+          Newest
+        </span>
+        <span
+          class="ms-Dropdown-caretDownWrapper caretDownWrapper-46"
+        >
+          <i
+            aria-hidden="true"
+            class="ms-Dropdown-caretDown caretDown-61"
+            data-icon-name="ChevronDown"
+          />
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="ms-StackItem css-41"
+  >
+    <div>
+      <button
+        aria-label="refresh"
+        class="ms-Button ms-Button--icon refresh-button root-62"
+        data-is-focusable="true"
+        type="button"
+      >
+        <span
+          class="ms-Button-flexContainer flexContainer-63"
+          data-automationid="splitbuttonprimary"
+        >
+          <i
+            aria-hidden="true"
+            class="ms-Icon root-33 ms-Button-icon icon-65"
+            data-icon-name="Refresh"
+            role="presentation"
+          />
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;

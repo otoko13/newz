@@ -1,0 +1,168 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot should look sensible 1`] = `
+<div
+  class="NewsItemsList"
+  style="height: 345px;"
+>
+  <div
+    class="ItemCard   "
+    style="top: 0px; margin-bottom: 20px; height: 95px;"
+  >
+    <div
+      class="ms-Stack css-36"
+    >
+      <div
+        class="ms-StackItem css-37"
+      >
+        <div
+          class="ms-Stack css-38"
+        >
+          <div
+            class="ms-StackItem css-37"
+          >
+            <div
+              class="title"
+            >
+              Another comment
+            </div>
+          </div>
+          <div
+            class="ms-StackItem icons css-37"
+          >
+            <i
+              aria-hidden="true"
+              class="title title-icon root-33"
+              data-icon-name="Articles"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="ms-StackItem css-37"
+      >
+        <div
+          class="ms-Stack details css-39"
+        >
+          <div
+            class="ms-StackItem date css-37"
+          >
+            17:38, Tuesday February 11th 2020
+          </div>
+          <div
+            class="ms-StackItem author css-37"
+          >
+            Maurice
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="ItemCard   "
+    style="top: 115px; margin-bottom: 20px; height: 95px;"
+  >
+    <div
+      class="ms-Stack css-36"
+    >
+      <div
+        class="ms-StackItem css-37"
+      >
+        <div
+          class="ms-Stack css-38"
+        >
+          <div
+            class="ms-StackItem css-37"
+          >
+            <div
+              class="title"
+            >
+              Yet another comment
+            </div>
+          </div>
+          <div
+            class="ms-StackItem icons css-37"
+          >
+            <i
+              aria-hidden="true"
+              class="title title-icon root-33"
+              data-icon-name="Articles"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="ms-StackItem css-37"
+      >
+        <div
+          class="ms-Stack details css-39"
+        >
+          <div
+            class="ms-StackItem date css-37"
+          >
+            17:38, Tuesday February 11th 2020
+          </div>
+          <div
+            class="ms-StackItem author css-37"
+          >
+            Phillip
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="ItemCard   "
+    style="top: 230px; margin-bottom: 20px; height: 95px;"
+  >
+    <div
+      class="ms-Stack css-36"
+    >
+      <div
+        class="ms-StackItem css-37"
+      >
+        <div
+          class="ms-Stack css-38"
+        >
+          <div
+            class="ms-StackItem css-37"
+          >
+            <div
+              class="title"
+            >
+              One more comment
+            </div>
+          </div>
+          <div
+            class="ms-StackItem icons css-37"
+          >
+            <i
+              aria-hidden="true"
+              class="title title-icon root-33"
+              data-icon-name="Articles"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="ms-StackItem css-37"
+      >
+        <div
+          class="ms-Stack details css-39"
+        >
+          <div
+            class="ms-StackItem date css-37"
+          >
+            17:38, Tuesday February 11th 2020
+          </div>
+          <div
+            class="ms-StackItem author css-37"
+          >
+            Kevin
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

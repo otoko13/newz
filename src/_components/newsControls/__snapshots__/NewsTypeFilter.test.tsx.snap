@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot should look sensible 1`] = `
+<div
+  class="ms-Dropdown-container NewsTypeFilter root-40"
+>
+  <label
+    class="ms-Label ms-Dropdown-label label-58"
+    id="Dropdown0-label"
+  >
+    What do you want to see?
+  </label>
+  <div
+    aria-expanded="false"
+    aria-haspopup="listbox"
+    aria-labelledby="Dropdown0-label Dropdown0-option"
+    class="ms-Dropdown dropdown-42"
+    data-is-focusable="true"
+    id="Dropdown0"
+    role="button"
+    tabindex="0"
+  >
+    <span
+      aria-atomic="true"
+      aria-invalid="false"
+      aria-live="polite"
+      class="ms-Dropdown-title title-43"
+      id="Dropdown0-option"
+    >
+      Stories
+    </span>
+    <span
+      class="ms-Dropdown-caretDownWrapper caretDownWrapper-44"
+    >
+      <i
+        aria-hidden="true"
+        class="ms-Dropdown-caretDown caretDown-59"
+        data-icon-name="ChevronDown"
+      />
+    </span>
+  </div>
+</div>
+`;

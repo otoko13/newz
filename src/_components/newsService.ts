@@ -29,8 +29,8 @@ export interface INewsItem {
 
 export enum ENewsType {
     Story = 'story',
-    Job = 'Job',
-    Poll = 'Poll',
+    Job = 'job',
+    Poll = 'poll',
 }
 
 export enum EStoriesType {
