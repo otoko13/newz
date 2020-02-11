@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import './itemCard.scss';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { INewsItem, NewsType } from '../newsService';
+import { INewsItem, ENewsType } from '../newsService';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 export interface IItemCardProps {
@@ -11,6 +11,7 @@ export interface IItemCardProps {
     onItemSelected: () => void;
     index: number;
     visited: boolean;
+    selected?: boolean;
 }
 
 export const CARD_HEIGHT = 95;
@@ -25,9 +26,9 @@ const ItemCard = (props: IItemCardProps) => {
     
     function getNewsTypeIconName() {
         switch (props.newsItem.type) {
-            case NewsType.Story:
+            case ENewsType.Story:
                 return 'Articles';
-            case NewsType.Job:
+            case ENewsType.Job:
                 return 'Commitments';
         }
         return '';
@@ -38,7 +39,7 @@ const ItemCard = (props: IItemCardProps) => {
             href={props.newsItem.url}
             target="_blank" 
             rel="noopener noreferrer"
-            className={`ItemCard ${props.visited ? 'visited' : ''} ${props.isLatest ? 'just-added' : ''}`}
+            className={`ItemCard ${props.visited && !props.selected ? 'visited' : ''} ${props.isLatest ? 'just-added' : ''} ${props.selected ? 'selected' : ''}`}
             onClick={props.onItemSelected} 
             style={
                 { 
@@ -57,7 +58,7 @@ const ItemCard = (props: IItemCardProps) => {
                             <Icon className='title title-icon' iconName={getNewsTypeIconName()} />
                             {
                                 !!props.newsItem.url &&
-                                <Icon className='title title-icon' iconName='NavigateExternalInline' />
+                                <Icon className='title title-icon title-icon-external' iconName='NavigateExternalInline' />
                             }
                         </Stack.Item>
                         

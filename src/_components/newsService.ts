@@ -24,9 +24,10 @@ export interface INewsItem {
     title: string;
     type: string;
     url?: string;
+    text?: string;
 }
 
-export enum NewsType {
+export enum ENewsType {
     Story = 'story',
     Job = 'Job',
 }
@@ -53,7 +54,7 @@ function getStoriesByIds(items: number[]) {
 }
 
 function getFilteredSortedRelevantStories(rawNewsItems: INewsItem[]) {
-    return rawNewsItems.filter(item => !!item && item.type && (item.type === 'story' || item.type === 'job')).sort((a, b) => a.time < b.time ? 1 : -1);
+    return rawNewsItems.filter(item => !!item && item.type && (item.type === ENewsType.Story || item.type === ENewsType.Job)).sort((a, b) => a.time < b.time ? 1 : -1);
 }
 
 const NewsService = {

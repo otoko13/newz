@@ -9,6 +9,7 @@ export interface INewsItemsListProps {
     latestItemIds: number[];
     onNewsItemSelected: (newsItem: INewsItem) => void;
     onLoadOlderNewsClicked: () => void;
+    selectedItem?: INewsItem;
 }
 
 const NewsItemsList = (props: INewsItemsListProps) => {
@@ -19,6 +20,7 @@ const NewsItemsList = (props: INewsItemsListProps) => {
                     props.newsItems.map((item, index) => 
                         <ItemCard 
                             key={item.id}
+                            selected={props.selectedItem && item.id === props.selectedItem.id}
                             visited={props.visitedItems.includes(item.id)}
                             index={index}
                             newsItem={item}

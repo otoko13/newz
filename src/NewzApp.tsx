@@ -1,6 +1,6 @@
 import React from 'react';
 import './NewzApp.scss';
-import NewsService, { INewsItem } from './_components/newsService';
+import NewsService, { INewsItem, ENewsType } from './_components/newsService';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import NewsItemsList from './_components/newsItemsList/NewsItemsList';
 import NewsControls from './_components/newsControls/NewsControls';
@@ -15,7 +15,8 @@ const NewzApp = () => {
   const [visitedItems, setVisitedItems] = React.useState<number[]>([]);
   const [isLoadingLatest, setIsLoadingLatest] = React.useState<boolean>(false);
   const [isLoadingOlder, setIsLoadingOlder] = React.useState<boolean>(false);
-  const [selectedNewsItem, setSelectedNewsitem] = React.useState<INewsItem>();
+  const [selectedNewsItem, setSelectedNewsitem] = React.useState<INewsItem | undefined>();
+  const [filters, setFilters] = React.useState<string[]>([ENewsType.Story, ENewsType.Job]);
 
   React.useEffect(fetchLatestNews, []);
 
@@ -35,6 +36,8 @@ const NewzApp = () => {
   function handleNewsItemSelected(newsItem: INewsItem) {
     if (!newsItem.url) {
       setSelectedNewsitem(newsItem);
+    } else {
+      setSelectedNewsitem(undefined);
     }
     setVisitedItems([...visitedItems, newsItem.id]);
   }
@@ -47,19 +50,28 @@ const NewzApp = () => {
     });
   }
 
+  function handleFiltersChanged(newFilters: string[]) {
+    setFilters(newFilters);
+  }
+
+  function filteredNewsItems() {
+    return newsItems.filter(item => filters.includes(item.type));
+  }
+
   return (
     <Stack className="NewzApp" verticalAlign='start' horizontal tokens={{childrenGap: 20}}>
       <Stack.Item className='left-panel' styles={{root: {width: '35%', height: '100%'}}}>
         <Stack verticalFill>
           <Stack.Item shrink>
-            <NewsControls onRefreshClick={fetchLatestNews} />
+            <NewsControls onRefreshClick={fetchLatestNews} onFiltersChanged={handleFiltersChanged} filters={filters} />
           </Stack.Item>
           <Stack.Item grow className='list-container'>
             {
               isLoadingLatest && <LoadShimmerCollection />
             }
             <NewsItemsList 
-              newsItems={newsItems}
+              newsItems={filteredNewsItems()}
+              selectedItem={selectedNewsItem}
               visitedItems={visitedItems}
               latestItemIds={justArrivedIds} 
               onNewsItemSelected={handleNewsItemSelected} 
