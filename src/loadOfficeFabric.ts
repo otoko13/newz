@@ -1,4 +1,5 @@
 import { loadTheme } from '@uifabric/styling/lib/styles';
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 
 export const fabricThemePalette = {
     themePrimary: '#d45100',
@@ -30,4 +31,5 @@ export function loadFabricTheme() {
         palette: fabricThemePalette,
         fonts: {},
     });
+    initializeIcons();
 }

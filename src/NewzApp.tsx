@@ -1,9 +1,9 @@
 import React from 'react';
 import './NewzApp.scss';
-import NewsService, { newsBase } from './_components/newsService';
+import NewsService from './_components/newsService';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import NewsItemsList from './_components/newsItemsList/NewsItemsList';
-import FullItemDisplay from './_components/fullItemDisplay/FullItemDisplay';
+import NewsControls from './_components/newsControls/NewsControls';
 
 export interface INewsItem {
   by: string;
@@ -17,54 +17,59 @@ export interface INewsItem {
   url?: string;
 }
 
+const ITEMS_IN_BATCH = 20;
+
 const NewzApp = () => {
   const [newsItems, setNewsItems] = React.useState<INewsItem[]>([]);
-  const [selectedNewsItem, setSelectedNewsitem] = React.useState<INewsItem>();
   const [justArrivedIds, setJustArrivedIds] = React.useState<number[]>([]);
+  const [visitedItems, setVisitedItems] = React.useState<number[]>([]);
   
-  React.useEffect(() => {
-    // NewsService.subscribeToNewsUpdates(updateNewsItems);
-    // const newsRefresher = setInterval(fetchLatestIds, 15000);
-    fetchLatestIds();
+  React.useEffect(fetchLatestNews, []);
 
-    return (() => {
-      //clearInterval(newsRefresher);
-    });
-  }, []);
-
-  function fetchLatestIds() {
+  function fetchLatestNews() {
     let newIds: number[];
     NewsService.getLatestNewsItemsIds().then((ids: number[]) => {
-      const latest50 = ids.slice(0, 100);
+      const latestItems = ids.slice(0, ITEMS_IN_BATCH);
       const existingIds = newsItems.map(item => item.id);
-      newIds = latest50.filter(id => !existingIds.includes(id));
+      newIds = latestItems.filter(id => !existingIds.includes(id));
       return NewsService.getNewsStoriesByIds(newIds);
     }).then((latestNewsitems: INewsItem[]) => {
-      const relevantLatestNews = latestNewsitems.filter(item => item.type && (item.type === 'story' || item.type === 'job'));
-      setNewsItems(oldItems => [...oldItems, ...relevantLatestNews]);
+      const relevantLatestNews = latestNewsitems.filter(item => !!item && item.type && (item.type === 'story' || item.type === 'job')).sort((a, b) => a.time > b.time ? 1 : -1);
+      setNewsItems(oldItems => [...relevantLatestNews, ...oldItems]);
       setJustArrivedIds(newIds);
     });
   }
 
-  // function updateNewsItems(newsItems: any[]) {
-  //   setNewsItems(newsItems);
-  // }
-
   function handleNewsItemSelected(newsItem: INewsItem) {
-    setSelectedNewsitem(newsItem);
+    setVisitedItems([...visitedItems, newsItem.id]);
+  }
+
+  function fetchOlderNews() {
+
   }
 
   return (
-    <div className="NewzApp">
-        <Stack horizontal verticalFill={true} verticalAlign='start' tokens={{childrenGap: 20}}>
-          <Stack.Item shrink verticalFill className='list-container' styles={{root: {width: '35%'}}}>
-            <NewsItemsList newsItems={newsItems} latestItemIds={justArrivedIds} onNewsItemSelected={handleNewsItemSelected} />  
-          </Stack.Item>
-          <Stack.Item verticalFill className='full-display-container' styles={{root: {width: '65%'}}}>
-            <FullItemDisplay newsItem={selectedNewsItem} />  
-          </Stack.Item>
-        </Stack>
-    </div>
+    <Stack className="NewzApp" verticalAlign='start'>
+      <Stack.Item shrink>
+        <NewsControls onRefreshClick={fetchLatestNews} />
+      </Stack.Item>
+      <Stack.Item grow>
+        <div className='ms-Grid list-container' dir='ltr'>
+          <div className='ms-Grid-row'>
+            <div className='ms-Grid-col ms-lg3 ms-hiddenMdDown'></div>
+            <div className='ms-Grid-col ms-lg6 ms-md12'>
+              <NewsItemsList 
+                newsItems={newsItems}
+                visitedItems={visitedItems}
+                latestItemIds={justArrivedIds} 
+                onNewsItemSelected={handleNewsItemSelected} 
+                onLoadOlderNewsClicked={fetchOlderNews} />
+            </div>
+            <div className='ms-Grid-col ms-lg3 ms-hiddenMdDown'></div>
+          </div>
+        </div>
+      </Stack.Item>
+    </Stack>
   );
 };
 

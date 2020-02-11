@@ -8,8 +8,11 @@
   overflow: hidden;
 
   .list-container {
-    background: $neutralLighter;
     height: 100%;
+
+    .ms-Grid-row, .ms-Grid-col {
+      height: 100%;
+    }
   }
 }
 

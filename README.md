@@ -9,7 +9,7 @@ Mayur Bapodra\
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Run the app using `npm run start` from the project directory. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Install necessary packages by first running `npm install` from the project directory. Run the app using `npm run start` in the same directory. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 Run tests using `npm run test`.
 

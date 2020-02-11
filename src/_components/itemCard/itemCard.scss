@@ -1,0 +1,31 @@
+@import '../../fabricTheme/variables';
+
+.ItemCard {
+    position: absolute;
+    width: 90%;
+    border: 2px solid $themeDark;
+    border-radius: 7px;
+    padding: 10px 15px;
+    margin-left: 5%;
+    cursor: pointer;
+
+    .title {
+        font-size: 1.2em;
+        color: $themeDark;
+    }
+
+    .details {
+        padding-top: 5px;
+        font-size: 0.8em;
+        color: $neutralPrimaryAlt;
+    }
+
+    &.read {
+        background-color: $neutralLight;
+        border: none;
+
+        .title {
+            color: $neutralDark;
+        }
+    }
+}
