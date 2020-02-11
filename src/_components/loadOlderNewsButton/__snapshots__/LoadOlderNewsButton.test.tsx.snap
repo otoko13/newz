@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot should look sensible 1`] = `
+<div
+  class="LoadOlderNewsButton"
+>
+  <button
+    class="ms-Button ms-Button--action ms-Button--command root-40"
+    data-is-focusable="true"
+    type="button"
+  >
+    <span
+      class="ms-Button-flexContainer flexContainer-41"
+      data-automationid="splitbuttonprimary"
+    >
+      <span
+        class="ms-Button-textContainer textContainer-42"
+      >
+        <span
+          class="ms-Button-label label-44"
+          id="id__0"
+        >
+          Click to see older news
+        </span>
+      </span>
+    </span>
+  </button>
+  '
+</div>
+`;
