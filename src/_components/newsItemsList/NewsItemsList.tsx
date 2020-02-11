@@ -1,7 +1,7 @@
 import React from 'react';
-import { INewsItem } from '../../NewzApp';
 import './newsItemsList.scss';
 import ItemCard, { CARD_BOX_HEIGHT } from '../itemCard/ItemCard';
+import { INewsItem } from '../newsService';
 
 export interface INewsItemsListProps {
     newsItems: INewsItem[];

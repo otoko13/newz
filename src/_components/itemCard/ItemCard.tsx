@@ -1,8 +1,9 @@
 import React from 'react';
 import moment from 'moment';
-import { INewsItem } from '../../NewzApp';
 import './itemCard.scss';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { INewsItem, NewsType } from '../newsService';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 export interface IItemCardProps {
     newsItem: INewsItem;
@@ -21,6 +22,17 @@ function getFormattedDate(time: number) {
 }
 
 const ItemCard = (props: IItemCardProps) => {
+    
+    function getNewsTypeIconName() {
+        switch (props.newsItem.type) {
+            case NewsType.Story:
+                return 'Articles';
+            case NewsType.Job:
+                return 'Commitments';
+        }
+        return '';
+    }
+
     return (
         <a 
             href={props.newsItem.url}
@@ -37,7 +49,20 @@ const ItemCard = (props: IItemCardProps) => {
             }>
             <Stack verticalFill verticalAlign='space-between'>
                 <Stack.Item>
-                    <div className='title'>{props.newsItem.title}</div>
+                    <Stack horizontal horizontalAlign='space-between' verticalAlign='start'>
+                        <Stack.Item>
+                            <div className='title'>{props.newsItem.title}</div>
+                        </Stack.Item>
+                        <Stack.Item className='icons'>
+                            <Icon className='title title-icon' iconName={getNewsTypeIconName()} />
+                            {
+                                !!props.newsItem.url &&
+                                <Icon className='title title-icon' iconName='NavigateExternalInline' />
+                            }
+                        </Stack.Item>
+                        
+                    </Stack>
+                    
                 </Stack.Item>
                 <Stack.Item>
                     <Stack horizontal horizontalAlign='space-between' className='details'>
