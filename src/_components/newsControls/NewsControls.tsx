@@ -17,6 +17,7 @@ const NewsControls = (props: INewsControlsProps) => {
     return (
         <Stack horizontal verticalAlign='end' horizontalAlign='space-between' className='NewsControls'>
             <Stack.Item>
+                <div className='header-image' />
                 <NewstypeFilter onFiltersChanged={props.onFiltersChanged} filters={props.filters} />
                 <StoryTypeFilter onFilterChanged={props.onStoryTypeChange} filter={props.storiesType} />
             </Stack.Item>

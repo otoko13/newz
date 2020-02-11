@@ -17,20 +17,24 @@ Run tests using `npm run test`.
 
 As always with coding exercises, you can't do everything you'd love to. Here are a list of improvements I'd make to the design and implementation given more time:
 
-- I limited the exercise to only 2 types of articles on Hacker News - jobs and stories. With more time, I would have added polls with comments to the available items. These would have to be constructed as trees to display descendents.
+- I would have used more time to evaluate the data structure. As a first pass, I have assumed a single level of comments but it could easily be a tree. I've also not handled polls properly and need to investigate further (especially w.r.t. pollopt).
 
 - Alternative styling framework to office-ui-fabric - while it has a massive set of features, components and shortcuts, it's not the best one out there for a nice looking app. Though it does create a familiar UX for Windows users, the main reason I used it was recent familiarity with the code. 
 
-- A much nicer theme. 
+- A much nicer theme and much more work on the styles. 
 
 - Add proper typing for all the different kinds of news items available through Hacker News.
 
-- The method of getting news items could be much improved
+- Renaming some of the components to make it clearer what they do. 
 
-- More thorough Jest testing.
+- The method of getting news items could be much improved - currently I get a batch of items and filter out unwanted types from it. This could potentially leave you with very few new items. A slightly slower method but one that returns more content would involve several passes of the available items until the full batch size is returned. I could also improve the method of retrieving comments - strangely, many "kid" items for stories are not of the comment type, but actually stories. I'm not sure if this is a bug in the API or a data issue.  
 
-- Other nice to have features:
+- More thorough Jest testing, especially of the news service and the main NewzApp component.
+
+- Lots of consideration for a responsive layout - this doesn't work well at all on smaller screens.
+
+- Other improvements:
     - Mark as unread button
-    - Another filter to select between top stories, new stories and best stories
     - Add some keyboard navigation (up, down)
-
+    - Making sure all accessibility labels etc. are present
+    - Checking for text overflow on all elements

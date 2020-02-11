@@ -8,6 +8,9 @@ exports[`snapshot should look sensible 1`] = `
     class="ms-StackItem css-41"
   >
     <div
+      class="header-image"
+    />
+    <div
       class="ms-Dropdown-container NewsTypeFilter root-42"
     >
       <label

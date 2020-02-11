@@ -88,7 +88,7 @@ const NewzApp = () => {
 
   return (
     <Stack className="NewzApp" verticalAlign='start' horizontal tokens={{childrenGap: 20}}>
-      <Stack.Item className='left-panel' styles={{root: {width: '35%', height: '100%'}}}>
+      <Stack.Item className='left-panel' styles={{root: {width: '40%', height: '100%'}}}>
         <Stack verticalFill>
           <Stack.Item shrink>
             <NewsControls 
@@ -116,7 +116,7 @@ const NewzApp = () => {
           </Stack.Item>
         </Stack>
       </Stack.Item>
-      <Stack.Item verticalFill className='right-panel full-display-container' styles={{root: {width: '65%'}}}>
+      <Stack.Item verticalFill className='right-panel full-display-container' styles={{root: {width: '60%'}}}>
         <FullItemDisplay 
           newsItem={selectedNewsItem}
           onNextClick={handlNextClicked}

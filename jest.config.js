@@ -18,9 +18,11 @@ module.exports = {
     moduleNameMapper: {
         'office-ui-fabric-react/lib/(.*)$': 'office-ui-fabric-react/lib-commonjs/$1',
         '\\.(css|scss)$': 'identity-obj-proxy',
+        '\\.(png|jpg)$': 'identity-obj-proxy',
     },
     transformIgnorePatterns: [
         '^.+\\.module\\.{css,sass,scss}$',
+        '\\.(png|jpg)$',
     ],
     setupFiles: ['./jest.setup.js'],
 };
