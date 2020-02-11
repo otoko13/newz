@@ -1,8 +1,7 @@
 import React from 'react';
 import { INewsItem } from '../../NewzApp';
 import './newsItemsList.scss';
-import ItemCard from '../itemCard/ItemCard';
-import LoadOlderNewsButton from '../loadOlderNewsButton/LoadOlderNewsButton';
+import ItemCard, { CARD_BOX_HEIGHT } from '../itemCard/ItemCard';
 
 export interface INewsItemsListProps {
     newsItems: INewsItem[];
@@ -15,7 +14,7 @@ export interface INewsItemsListProps {
 const NewsItemsList = (props: INewsItemsListProps) => {
     return (
         <>
-            <div className='NewsItemsList'>
+            <div className='NewsItemsList' style={{height: `${CARD_BOX_HEIGHT * props.newsItems.length}px`}}>
                 {
                     props.newsItems.map((item, index) => 
                         <ItemCard 
@@ -27,9 +26,7 @@ const NewsItemsList = (props: INewsItemsListProps) => {
                             isLatest={props.latestItemIds.includes(item.id)} />
                     )
                 }
-                <LoadOlderNewsButton onLoadOlderNewsClicked={props.onLoadOlderNewsClicked} numberOfItemsLoaded={props.newsItems.length} />
             </div>
-            
         </>
     );
 }

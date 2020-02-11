@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { INewsItem } from '../../NewzApp';
 import './itemCard.scss';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
@@ -11,14 +12,21 @@ export interface IItemCardProps {
     visited: boolean;
 }
 
-const CARD_HEIGHT = 95;
-const CARD_SPACING = 20;
+export const CARD_HEIGHT = 95;
+export const CARD_SPACING = 20;
 export const CARD_BOX_HEIGHT = CARD_HEIGHT + CARD_SPACING;
+
+function getFormattedDate(time: number) {
+    return moment.utc(time).format('HH:mm, dddd MMMM Do YYYY');
+}
 
 const ItemCard = (props: IItemCardProps) => {
     return (
-        <div 
-            className={`ItemCard ${props.visited ? 'visited' : ''}`}
+        <a 
+            href={props.newsItem.url}
+            target="_blank" 
+            rel="noopener noreferrer"
+            className={`ItemCard ${props.visited ? 'visited' : ''} ${props.isLatest ? 'just-added' : ''}`}
             onClick={props.onItemSelected} 
             style={
                 { 
@@ -34,7 +42,7 @@ const ItemCard = (props: IItemCardProps) => {
                 <Stack.Item>
                     <Stack horizontal horizontalAlign='space-between' className='details'>
                         <Stack.Item className='date'>
-                            {props.newsItem.time}
+                            {getFormattedDate(props.newsItem.time * 1000)}
                         </Stack.Item>
                         <Stack.Item className='author'>
                             {props.newsItem.by}
@@ -42,7 +50,7 @@ const ItemCard = (props: IItemCardProps) => {
                     </Stack>
                 </Stack.Item>
             </Stack>
-        </div>
+        </a>
     );
 }
 
