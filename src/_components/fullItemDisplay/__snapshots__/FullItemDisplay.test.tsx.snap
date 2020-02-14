@@ -80,13 +80,13 @@ exports[`snapshot should look sensible 1`] = `
       I believe
     </div>
     <div
-      class="CommentsSection"
+      class="comments-title"
     >
-      <div
-        class="title"
-      >
-        Comments:
-      </div>
+      Comments:
+    </div>
+    <div
+      class="CommentsSection "
+    >
       <div
         class="LoadShimmer"
         style="height: 95px; margin-bottom: 20px;"

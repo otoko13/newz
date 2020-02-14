@@ -49,7 +49,7 @@ describe('snapshot', () => {
 describe('no news message', () => {
     it('should not show a please select something message when there is an item', async () => {
         const { queryByText } = render(<FullItemDisplay {...props} newsItem={undefined} />);
-        expect(queryByText('Please click on a news item that isn\'t a link to view it here')).not.toBeNull();
+        expect(queryByText('Please click on a news item to view it here')).not.toBeNull();
         await act(async () => {
             await NewsService.getComments({} as INewsItem);
         });
@@ -57,7 +57,7 @@ describe('no news message', () => {
 
     it('should show the item instead if there is one', async () => {
         const { queryByText } = render(<FullItemDisplay {...props} />);
-        expect(queryByText('Please click on a news item that isn\'t a link to view it here')).toBeNull();
+        expect(queryByText('Please click on a news item to view it here')).toBeNull();
         await act(async () => {
             await NewsService.getComments({} as INewsItem);
         });

@@ -37,13 +37,14 @@ const FullItemDisplay = (props: IFullItemDisplayProps) => {
                         {
                             props.newsItem.url && <a href={props.newsItem.url} className='article-link' target='_blank' rel='noopener noreferrer'>{props.newsItem.url}</a>
                         }
-                        <CommentsSection newsItem={props.newsItem} />
+                        <div className='comments-title'>Comments:</div>
+                        <CommentsSection newsItem={props.newsItem} isFirstLevel={true} />
                         
                     </>
                 }
                 { 
                     !props.newsItem && 	
-                    <div className='no-items-message'>Please click on a news item that isn't a link to view it here</div>	
+                    <div className='no-items-message'>Please click on a news item to view it here</div>	
                 }
             </Stack.Item>	
         </Stack>	

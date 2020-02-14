@@ -5,7 +5,8 @@ import LoadShimmer from '../loadShimmer/LoadShimmer';
 import Comment from './Comment';
 
 export interface ICommentsSectionProps {	
-    newsItem?: INewsItem;	
+    newsItem?: INewsItem;
+    isFirstLevel?: boolean;
 }	
 
 const CommentsSection = (props: ICommentsSectionProps) => {
@@ -25,13 +26,12 @@ const CommentsSection = (props: ICommentsSectionProps) => {
     }, [props.newsItem]);
 
     return (
-        <div className='CommentsSection'>
-            <div className='title'>Comments:</div>
+        <div className={`CommentsSection ${props.isFirstLevel ? '' : 'nested'}`}>
             {
                 loading && <LoadShimmer />
             }
             {
-                (!loading && comments.length === 0) &&
+                (props.isFirstLevel && !loading && comments.length === 0) &&
                 <div className='no-comments-message'>No Comments</div>	
             }
             { 

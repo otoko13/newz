@@ -62,12 +62,21 @@ describe('no comments', () => {
         });
     });
 
-    it('should show a no comments message when there are no comments', async () => {
+    it('should show a no comments message when there are no comments and this is the first level of comments', async () => {
         NewsService.getComments = jest.fn().mockResolvedValue([]);
-        const { queryByText } = render(<CommentsSection {...props}  />);
+        const { queryByText } = render(<CommentsSection {...props} isFirstLevel={true} />);
         await act(async () => {
             await NewsService.getComments({} as INewsItem);
             expect(queryByText('No Comments')).not.toBeNull();
+        });
+    });
+
+    it('should not show a no comments message when there are no comments and this is not the first level of comments', async () => {
+        NewsService.getComments = jest.fn().mockResolvedValue([]);
+        const { queryByText } = render(<CommentsSection {...props} isFirstLevel={false} />);
+        await act(async () => {
+            await NewsService.getComments({} as INewsItem);
+            expect(queryByText('No Comments')).toBeNull();
         });
     });
 });

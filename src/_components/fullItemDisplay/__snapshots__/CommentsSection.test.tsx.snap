@@ -2,13 +2,8 @@
 
 exports[`snapshot should look sensible 1`] = `
 <div
-  class="CommentsSection"
+  class="CommentsSection nested"
 >
-  <div
-    class="title"
-  >
-    Comments:
-  </div>
   <div
     class="LoadShimmer"
     style="height: 95px; margin-bottom: 20px;"
